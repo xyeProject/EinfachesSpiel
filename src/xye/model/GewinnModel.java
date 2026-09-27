@@ -30,6 +30,10 @@ public class GewinnModel {
     }
 
     public void berechneRunde(int spielerZahl) {
+        if (spielerZahl < 1 || spielerZahl > 9) {
+            throw new IllegalArgumentException("Ungültige Eingabe: Eingegebene Zahl muss zwischen 1 und 9 liegen");
+        }
+
         this.spielerZahl = spielerZahl;
         if (spielerZahl == computerZahl) {
             rundenErgebnis = 20;
