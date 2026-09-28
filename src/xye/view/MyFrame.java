@@ -4,10 +4,13 @@ import xye.controller.Controller;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.jar.JarEntry;
 
 public class MyFrame extends JFrame {
     JLabel rundenErgebnis;
-    JTextField textField;
+    JTextField spielerZahl;
+    JLabel gesamtPunkte;
+    JLabel computerZahl;
 
     public MyFrame(Controller controller) {
         super("Zahlen-Gewinnspiel");
@@ -28,10 +31,21 @@ public class MyFrame extends JFrame {
         rundenErgebnis.setBackground(Color.WHITE);
         boxLayout1.add(rundenErgebnis);
         boxLayout1.add(new JLabel("Deine Zahl:"));
-        textField = new JTextField();
-        textField.setBackground(Color.WHITE);
-        boxLayout1.add(textField);
+        spielerZahl = new JTextField();
+        spielerZahl.setBackground(Color.WHITE);
+        boxLayout1.add(spielerZahl);
         gridLayout.add(boxLayout1);
+
+        //BoxLayout2
+        boxLayout2.add(new JLabel("Gesamtpunkte:"));
+        gesamtPunkte = new JLabel("30");
+        gesamtPunkte.setBackground(Color.WHITE);
+        boxLayout2.add(gesamtPunkte);
+        boxLayout2.add(new JLabel("Computer"));
+        computerZahl = new JLabel();
+        computerZahl.setBackground(Color.WHITE);
+        boxLayout2.add(computerZahl);
+        gridLayout.add(boxLayout2);
 
 
         basisLayout.add(gridLayout);
