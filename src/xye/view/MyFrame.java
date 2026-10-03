@@ -32,7 +32,7 @@ public class MyFrame extends JFrame {
         rundenLabel.setMaximumSize(dimension);
         boxLayout1.add(rundenLabel);
 
-        boxLayout1.add(Box.createVerticalStrut(8));
+        boxLayout1.add(Box.createVerticalStrut(4));
 
         rundenErgebnis = new JLabel("Tippe eine Zahl von 1 bis 9");
         rundenErgebnis.setOpaque(true);
@@ -41,14 +41,14 @@ public class MyFrame extends JFrame {
         rundenErgebnis.setBackground(Color.WHITE);
         boxLayout1.add(rundenErgebnis);
 
-        boxLayout1.add(Box.createVerticalStrut(8));
+        boxLayout1.add(Box.createVerticalStrut(12));
 
         JLabel spielerZahlLabel = new JLabel("Deine Zahl");
         spielerZahlLabel.setPreferredSize(dimension);
         spielerZahlLabel.setMaximumSize(dimension);
         boxLayout1.add(spielerZahlLabel);
 
-        boxLayout1.add(Box.createVerticalStrut(8));
+        boxLayout1.add(Box.createVerticalStrut(4));
 
         spielerZahl = new JTextField();
         spielerZahl.setBackground(Color.WHITE);
@@ -63,7 +63,7 @@ public class MyFrame extends JFrame {
         gesamtpunkteLabel.setMaximumSize(dimension);
         boxLayout2.add(gesamtpunkteLabel);
 
-        boxLayout2.add(Box.createVerticalStrut(8));
+        boxLayout2.add(Box.createVerticalStrut(4));
 
         gesamtPunkte = new JLabel("30");
         gesamtPunkte.setOpaque(true);
@@ -72,14 +72,14 @@ public class MyFrame extends JFrame {
         gesamtPunkte.setMaximumSize(dimension);
         boxLayout2.add(gesamtPunkte);
 
-        boxLayout2.add(Box.createVerticalStrut(8));
+        boxLayout2.add(Box.createVerticalStrut(12));
 
         JLabel computerLabel = new JLabel("Computer");
         computerLabel.setMaximumSize(dimension);
         computerLabel.setPreferredSize(dimension);
         boxLayout2.add(computerLabel);
 
-        boxLayout2.add(Box.createVerticalStrut(8));
+        boxLayout2.add(Box.createVerticalStrut(4));
 
         computerZahl = new JLabel();
         computerZahl.setOpaque(true);
@@ -99,8 +99,13 @@ public class MyFrame extends JFrame {
         computerLabel.setHorizontalAlignment(JLabel.CENTER);
         computerZahl.setHorizontalAlignment(JLabel.CENTER);
 
+        JButton nochEinmal = new JButton("Noch einmal!");
+        nochEinmal.setAlignmentX(JButton.CENTER_ALIGNMENT);
+
         basisLayout.add(gridLayout);
-        //basisLayout.add();
+        basisLayout.add(Box.createVerticalStrut(16));
+        basisLayout.add(nochEinmal);
+        basisLayout.add(Box.createVerticalStrut(16));
         this.add(basisLayout);
         this.pack();
         this.setVisible(true);
