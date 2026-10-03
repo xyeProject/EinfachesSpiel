@@ -4,7 +4,6 @@ import xye.controller.Controller;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.jar.JarEntry;
 
 public class MyFrame extends JFrame {
     JLabel rundenErgebnis;
@@ -19,34 +18,86 @@ public class MyFrame extends JFrame {
         JPanel basisLayout = new JPanel();
         basisLayout.setLayout(new BoxLayout(basisLayout, BoxLayout.Y_AXIS));
 
-        JPanel gridLayout = new JPanel(new GridLayout(1,2));
+        JPanel gridLayout = new JPanel(new GridLayout(1,2,16,16));
         JPanel boxLayout1 = new JPanel();
         JPanel boxLayout2 = new JPanel();
         boxLayout1.setLayout(new BoxLayout(boxLayout1, BoxLayout.Y_AXIS));
         boxLayout2.setLayout(new BoxLayout(boxLayout2, BoxLayout.Y_AXIS));
 
         //BoxLayout1
-        boxLayout1.add(new JLabel("Rundenergebnis:"));
+        Dimension dimension = new Dimension(300,16);
+
+        JLabel rundenLabel = new JLabel("Rundenergebnis");
+        rundenLabel.setPreferredSize(dimension);
+        rundenLabel.setMaximumSize(dimension);
+        boxLayout1.add(rundenLabel);
+
+        boxLayout1.add(Box.createVerticalStrut(8));
+
         rundenErgebnis = new JLabel("Tippe eine Zahl von 1 bis 9");
+        rundenErgebnis.setOpaque(true);
+        rundenErgebnis.setPreferredSize(dimension);
+        rundenErgebnis.setMaximumSize(dimension);
         rundenErgebnis.setBackground(Color.WHITE);
         boxLayout1.add(rundenErgebnis);
-        boxLayout1.add(new JLabel("Deine Zahl:"));
+
+        boxLayout1.add(Box.createVerticalStrut(8));
+
+        JLabel spielerZahlLabel = new JLabel("Deine Zahl");
+        spielerZahlLabel.setPreferredSize(dimension);
+        spielerZahlLabel.setMaximumSize(dimension);
+        boxLayout1.add(spielerZahlLabel);
+
+        boxLayout1.add(Box.createVerticalStrut(8));
+
         spielerZahl = new JTextField();
         spielerZahl.setBackground(Color.WHITE);
+        spielerZahl.setPreferredSize(new Dimension(16,200));
+        spielerZahl.setMaximumSize(new Dimension(600,200));
         boxLayout1.add(spielerZahl);
         gridLayout.add(boxLayout1);
 
         //BoxLayout2
-        boxLayout2.add(new JLabel("Gesamtpunkte:"));
+        JLabel gesamtpunkteLabel = new JLabel("Gesamtpunkte");
+        gesamtpunkteLabel.setPreferredSize(dimension);
+        gesamtpunkteLabel.setMaximumSize(dimension);
+        boxLayout2.add(gesamtpunkteLabel);
+
+        boxLayout2.add(Box.createVerticalStrut(8));
+
         gesamtPunkte = new JLabel("30");
+        gesamtPunkte.setOpaque(true);
         gesamtPunkte.setBackground(Color.WHITE);
+        gesamtPunkte.setPreferredSize(dimension);
+        gesamtPunkte.setMaximumSize(dimension);
         boxLayout2.add(gesamtPunkte);
-        boxLayout2.add(new JLabel("Computer"));
+
+        boxLayout2.add(Box.createVerticalStrut(8));
+
+        JLabel computerLabel = new JLabel("Computer");
+        computerLabel.setMaximumSize(dimension);
+        computerLabel.setPreferredSize(dimension);
+        boxLayout2.add(computerLabel);
+
+        boxLayout2.add(Box.createVerticalStrut(8));
+
         computerZahl = new JLabel();
+        computerZahl.setOpaque(true);
         computerZahl.setBackground(Color.WHITE);
+        computerZahl.setPreferredSize(new Dimension(16,200));
+            computerZahl.setMaximumSize(new Dimension(600, 200));
         boxLayout2.add(computerZahl);
         gridLayout.add(boxLayout2);
 
+        //Texte in die Mitte legen
+        rundenLabel.setHorizontalAlignment(JLabel.CENTER);
+        rundenErgebnis.setHorizontalAlignment(JLabel.CENTER);
+        spielerZahlLabel.setHorizontalAlignment(JLabel.CENTER);
+        spielerZahl.setHorizontalAlignment(JTextField.CENTER);
+        gesamtpunkteLabel.setHorizontalAlignment(JLabel.CENTER);
+        gesamtPunkte.setHorizontalAlignment(JLabel.CENTER);
+        computerLabel.setHorizontalAlignment(JLabel.CENTER);
+        computerZahl.setHorizontalAlignment(JLabel.CENTER);
 
         basisLayout.add(gridLayout);
         //basisLayout.add();
