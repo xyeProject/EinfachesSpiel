@@ -149,4 +149,11 @@ public class MyFrame extends JFrame {
     public void nochEinmalDeaktivieren(boolean deaktivieren) {
         this.nochEinmal.setEnabled(!deaktivieren);
     }
+
+    public void faerben(Color color) {
+        this.spielerZahl.setBackground(color);
+        this.rundenErgebnis.setBackground(color);
+        this.computerZahl.setBackground(color);
+        this.gesamtPunkte.setBackground(color);
+    }
 }
