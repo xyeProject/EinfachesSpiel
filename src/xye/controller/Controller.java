@@ -40,14 +40,14 @@ public class Controller implements ActionListener, KeyListener {
 
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            myFrame.spielerZahlDeaktivieren(true);
-            myFrame.nochEinmalDeaktivieren(false);
             gewinnModel.berechneComputerZahl();
             gewinnModel.berechneRunde(myFrame.getSpielerZahl());
             myFrame.setComputerZahl(""+gewinnModel.getComputerZahl());
             myFrame.setGesamtPunkte(""+gewinnModel.getGesamtPunkte());
             myFrame.setRundenErgebnis(""+gewinnModel.getRundenErgebnis());
 
+            myFrame.spielerZahlDeaktivieren(true);
+            myFrame.nochEinmalDeaktivieren(false);
 
             if (gewinnModel.hatGewonnen()) {
                 myFrame.setRundenErgebnis("Gewonnen");
