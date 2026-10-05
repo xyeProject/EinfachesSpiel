@@ -3,6 +3,7 @@ package xye.controller;
 import xye.model.GewinnModel;
 import xye.view.MyFrame;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -24,6 +25,7 @@ public class Controller implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("nocheinmal")) {
+            myFrame.faerben(Color.WHITE);
             gewinnModel = new GewinnModel();
             myFrame.setComputerZahl("");
             myFrame.setGesamtPunkte(""+gewinnModel.getGesamtPunkte());
@@ -45,6 +47,11 @@ public class Controller implements ActionListener, KeyListener {
             myFrame.setGesamtPunkte(""+gewinnModel.getGesamtPunkte());
             myFrame.setRundenErgebnis(""+gewinnModel.getRundenErgebnis());
 
+            if (gewinnModel.getRundenErgebnis() > 0) {
+                myFrame.faerben(Color.GREEN);
+            } else {
+                myFrame.faerben(Color.RED);
+            }
 
             if (gewinnModel.hatGewonnen()) {
                 myFrame.setRundenErgebnis("Gewonnen");
