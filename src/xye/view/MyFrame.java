@@ -10,6 +10,7 @@ public class MyFrame extends JFrame {
     JTextField spielerZahl;
     JLabel gesamtPunkte;
     JLabel computerZahl;
+    JButton nochEinmal;
 
     public MyFrame(Controller controller) {
         super("Zahlen-Gewinnspiel");
@@ -100,7 +101,7 @@ public class MyFrame extends JFrame {
         computerLabel.setHorizontalAlignment(JLabel.CENTER);
         computerZahl.setHorizontalAlignment(JLabel.CENTER);
 
-        JButton nochEinmal = new JButton("Noch einmal!");
+        nochEinmal = new JButton("Noch einmal!");
         nochEinmal.setAlignmentX(JButton.CENTER_ALIGNMENT);
         nochEinmal.setActionCommand("nocheinmal");
         nochEinmal.addActionListener(controller);
@@ -139,5 +140,13 @@ public class MyFrame extends JFrame {
 
     public void spielerZahlLoeschen() {
         this.spielerZahl.setText("");
+    }
+
+    public void spielerZahlDeaktivieren(boolean deaktivieren) {
+        this.spielerZahl.setEnabled(!deaktivieren);
+    }
+
+    public void nochEinmalDeaktivieren(boolean deaktivieren) {
+        this.nochEinmal.setEnabled(!deaktivieren);
     }
 }

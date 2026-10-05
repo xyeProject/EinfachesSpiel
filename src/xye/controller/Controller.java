@@ -24,9 +24,10 @@ public class Controller implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("nocheinmal")) {
+            myFrame.spielerZahlDeaktivieren(false);
+            myFrame.nochEinmalDeaktivieren(true);
             gewinnModel = new GewinnModel();
             myFrame.setComputerZahl("");
-            myFrame.setGesamtPunkte(""+gewinnModel.getGesamtPunkte());
             myFrame.setRundenErgebnis("Tippe eine Zahl von 1 bis 9");
             myFrame.spielerZahlLoeschen();
         }
@@ -39,6 +40,8 @@ public class Controller implements ActionListener, KeyListener {
 
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+            myFrame.spielerZahlDeaktivieren(true);
+            myFrame.nochEinmalDeaktivieren(false);
             gewinnModel.berechneComputerZahl();
             gewinnModel.berechneRunde(myFrame.getSpielerZahl());
             myFrame.setComputerZahl(""+gewinnModel.getComputerZahl());
