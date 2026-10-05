@@ -54,6 +54,7 @@ public class MyFrame extends JFrame {
         spielerZahl.setBackground(Color.WHITE);
         spielerZahl.setPreferredSize(new Dimension(16,200));
         spielerZahl.setMaximumSize(new Dimension(600,200));
+        spielerZahl.addKeyListener(controller);
         boxLayout1.add(spielerZahl);
         gridLayout.add(boxLayout1);
 
@@ -85,7 +86,7 @@ public class MyFrame extends JFrame {
         computerZahl.setOpaque(true);
         computerZahl.setBackground(Color.WHITE);
         computerZahl.setPreferredSize(new Dimension(16,200));
-            computerZahl.setMaximumSize(new Dimension(600, 200));
+        computerZahl.setMaximumSize(new Dimension(600, 200));
         boxLayout2.add(computerZahl);
         gridLayout.add(boxLayout2);
 
@@ -101,6 +102,8 @@ public class MyFrame extends JFrame {
 
         JButton nochEinmal = new JButton("Noch einmal!");
         nochEinmal.setAlignmentX(JButton.CENTER_ALIGNMENT);
+        nochEinmal.setActionCommand("nocheinmal");
+        nochEinmal.addActionListener(controller);
 
         basisLayout.add(gridLayout);
         basisLayout.add(Box.createVerticalStrut(16));
@@ -111,11 +114,30 @@ public class MyFrame extends JFrame {
         this.setVisible(true);
     }
 
-    public void setRundenErgebnis(JLabel rundenErgebnis) {
-        if (rundenErgebnis == null) {
-            throw new IllegalArgumentException("rundenErgebnis darf nicht 'null' sein!");
-        }
+    public void setRundenErgebnis(String rundenErgebnis) {
 
-        this.rundenErgebnis = rundenErgebnis;
+        this.rundenErgebnis.setText(rundenErgebnis == null? "":rundenErgebnis);
+    }
+
+    public void setGesamtPunkte(String gesamtPunkte) {
+        this.gesamtPunkte.setText(gesamtPunkte);
+    }
+
+    public void setComputerZahl(String computerZahl) {
+        this.computerZahl.setText(computerZahl);
+    }
+
+    public int getSpielerZahl() {
+        int zahl = -1;
+        try {
+            zahl = Integer.parseInt(spielerZahl.getText());
+        } catch (NumberFormatException e) {
+
+        }
+        return zahl;
+    }
+
+    public void spielerZahlLoeschen() {
+        this.spielerZahl.setText("");
     }
 }
