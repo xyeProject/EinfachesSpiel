@@ -91,7 +91,7 @@ public class MyFrame extends JFrame {
         boxLayout2.add(computerZahl);
         gridLayout.add(boxLayout2);
 
-        //Texte in die Mitte legen
+        //Elemente in die Mitte legen
         rundenLabel.setHorizontalAlignment(JLabel.CENTER);
         rundenErgebnis.setHorizontalAlignment(JLabel.CENTER);
         spielerZahlLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -109,6 +109,7 @@ public class MyFrame extends JFrame {
         basisLayout.add(gridLayout);
         basisLayout.add(Box.createVerticalStrut(16));
         basisLayout.add(nochEinmal);
+        nochEinmal.setEnabled(false);
         basisLayout.add(Box.createVerticalStrut(16));
         this.add(basisLayout);
         this.pack();
@@ -116,24 +117,23 @@ public class MyFrame extends JFrame {
     }
 
     public void setRundenErgebnis(String rundenErgebnis) {
-
         this.rundenErgebnis.setText(rundenErgebnis == null? "":rundenErgebnis);
     }
 
     public void setGesamtPunkte(String gesamtPunkte) {
-        this.gesamtPunkte.setText(gesamtPunkte);
+        this.gesamtPunkte.setText(gesamtPunkte == null? "":gesamtPunkte);
     }
 
     public void setComputerZahl(String computerZahl) {
-        this.computerZahl.setText(computerZahl);
+        this.computerZahl.setText(computerZahl == null? "":computerZahl);
     }
 
     public int getSpielerZahl() {
-        int zahl = -1;
+        int zahl;
         try {
             zahl = Integer.parseInt(spielerZahl.getText());
         } catch (NumberFormatException e) {
-
+            return -1;
         }
         return zahl;
     }
@@ -151,6 +151,9 @@ public class MyFrame extends JFrame {
     }
 
     public void faerben(Color color) {
+        if (color == null) {
+            color = Color.WHITE;
+        }
         this.spielerZahl.setBackground(color);
         this.rundenErgebnis.setBackground(color);
         this.computerZahl.setBackground(color);

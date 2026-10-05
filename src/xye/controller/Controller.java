@@ -3,6 +3,7 @@ package xye.controller;
 import xye.model.GewinnModel;
 import xye.view.MyFrame;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,23 +44,27 @@ public class Controller implements ActionListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             gewinnModel.berechneComputerZahl();
-            gewinnModel.berechneRunde(myFrame.getSpielerZahl());
-            myFrame.setComputerZahl(""+gewinnModel.getComputerZahl());
-            myFrame.setGesamtPunkte(""+gewinnModel.getGesamtPunkte());
-            myFrame.setRundenErgebnis(""+gewinnModel.getRundenErgebnis());
+            try {
+                gewinnModel.berechneRunde(myFrame.getSpielerZahl());
+                myFrame.setComputerZahl(""+gewinnModel.getComputerZahl());
+                myFrame.setGesamtPunkte(""+gewinnModel.getGesamtPunkte());
+                myFrame.setRundenErgebnis(""+gewinnModel.getRundenErgebnis());
 
-            myFrame.spielerZahlDeaktivieren(true);
-            myFrame.nochEinmalDeaktivieren(false);
-            if (gewinnModel.getRundenErgebnis() > 0) {
-                myFrame.faerben(Color.GREEN);
-            } else {
-                myFrame.faerben(Color.RED);
-            }
+                myFrame.spielerZahlDeaktivieren(true);
+                myFrame.nochEinmalDeaktivieren(false);
+                if (gewinnModel.getRundenErgebnis() > 0) {
+                    myFrame.faerben(Color.GREEN);
+                } else {
+                    myFrame.faerben(Color.RED);
+                }
 
-            if (gewinnModel.hatGewonnen()) {
-                myFrame.setRundenErgebnis("Gewonnen");
-            } else if (gewinnModel.hatVerloren()) {
-                myFrame.setRundenErgebnis("Verloren");
+                if (gewinnModel.hatGewonnen()) {
+                    myFrame.setRundenErgebnis("Gewonnen");
+                } else if (gewinnModel.hatVerloren()) {
+                    myFrame.setRundenErgebnis("Verloren");
+                }
+            } catch (IllegalArgumentException illegalArgumentException) {
+                JOptionPane.showMessageDialog(null, illegalArgumentException.getMessage());
             }
         }
     }
